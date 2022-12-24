@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["title"] = "Index";
+}
+
+<h1>Index Category </h1>
+<table style="width:100%">
+    <theead>
+        <tr>
+            <th> Catgeory name</th>
+            <th>Display Order </th>
+        </tr>
+    </theead>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td width="50%">
+                    @obj.Title
+                </td>
+                <td width="30%">
+                    @obj.DisplayOrder
+                </td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id"
+                       class="btn btn-primary mx-2"> <i class="bi bi-pencil-square"></i> Edit</a>
+                        <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id"
+                       class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Categories" asp-action="formulaire" class="btn btn-outline-info">Create</a>
